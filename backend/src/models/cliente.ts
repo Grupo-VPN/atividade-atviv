@@ -14,6 +14,10 @@ export class cliente {
     @Column({
         type: "varchar"
     })
+    cliente_genero!: String
+    @Column({
+        type: "varchar"
+    })
     cliente_nome!: String
 
     @Column({

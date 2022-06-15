@@ -36,9 +36,6 @@ export class cliente {
     @OneToMany(() => telefone, (telefones) => telefones.cliente)
     telefones!: telefone
     @ManyToMany(() => produtos, (produtos) => produtos.cliente)
-    @JoinTable({
-        name: "produto_cliente"
-    })
     produtos!: produtos[]
     @ManyToMany(() => servicos, (servicos) => servicos.cliente)
     @JoinTable({

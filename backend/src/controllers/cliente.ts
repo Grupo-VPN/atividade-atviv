@@ -1,20 +1,21 @@
 import { cliente } from 'models/cliente'
 import { AppDataSource } from 'database/database'
-import { Request, Response } from 'express'
+import { NextFunction, Request, Response } from 'express'
+import { ICliente } from 'interface'
 
 const clienteRepository = AppDataSource.getRepository(cliente)
 
 class Cliente {
-    async create(req: Request, res: Response) {
+    async create(req: Request, res: Response, next: NextFunction) {
         try {
-            const { cliente_nome, cliente_nomeSocial, cliente_genero } = req.body
-            await clienteRepository.
-                createQueryBuilder()
+            const { }: ICliente = req.body
+            await clienteRepository
+                .createQueryBuilder()
                 .insert()
                 .into(cliente)
                 .values(req.body)
                 .execute()
-            res.json(req.body)
+            next()
         } catch (error) {
             res.json(error)
         }
@@ -58,20 +59,37 @@ class Cliente {
         try {
             const { id } = req.params
             const find = await clienteRepository
-                .findOne({
-                    where: {
-                        cliente_id: id
-                    }
+                .createQueryBuilder()
+                .select([
+                    "cli",
+                    "cpf",
+                    "rg"
+                ])
+                .from(cliente, 'cli')
+                .leftJoin('cli.cpf', 'cpf')
+                .leftJoin('cli.rg', 'rg')
+                .where("cli.cliente_id = :cliente_id", {
+                    cliente_id: id
                 })
+                .getOne()
             res.json(find)
         } catch (error) {
             res.json(error)
         }
     }
-    async findMany(res: Response){
+    async findMany(req: Request, res: Response) {
         try {
             const find = await clienteRepository
-            .find()
+                .createQueryBuilder()
+                .select([
+                    "cli",
+                    "cpf",
+                    "rg"
+                ])
+                .from(cliente, 'cli')
+                .leftJoin('cli.cpf', 'cpf')
+                .leftJoin('cli.rg', 'rg')
+                .getMany()
             res.json(find)
         } catch (error) {
             res.json(error)

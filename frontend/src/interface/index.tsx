@@ -10,15 +10,18 @@ interface ICliente {
     produtos: IProduto[];
 }
 interface IRG {
+    rg_id: number;
     rg_valor: string,
     rg_dataEmissao: string,
 }
 interface ICPF {
     cpf_valor: string,
+    cpf_id: number,
     cpf_dataEmissao: string
 }
 interface ITell {
     telefone_ddd: string,
+    telefone_id: number,
     telefone_numero: string
 }
 interface IServico {

@@ -16,6 +16,12 @@ import VisualizarProduto from '../pages/Visualizar/produtos';
 import VisualizarServico from '../pages/Visualizar/servicos';
 import EditarCliente from '../pages/Editar/clientes';
 import ClienteServico from '../pages/Vincular/Servico-Cliente'
+import ClienteProduto from '../pages/Vincular/Produto-Cliente'
+import EditarRG from '../pages/Visualizar/clientes/rg'
+import EditarCPF from '../pages/Visualizar/clientes/cpf'
+import EditarTell from '../pages/Visualizar/clientes/telefone'
+import CadastrarRG from '../pages/Cadastro/clientes/rg'
+import CadatrarTelefone from '../pages/Cadastro/clientes/telefone'
 
 function AppRoutes() {
     return (
@@ -36,6 +42,12 @@ function AppRoutes() {
                 <Route path='/editar_produto/1' element={<EditarCliente/>}/>
                 <Route path='/editar_servico/1' element={<EditarCliente/>}/>
                 <Route path='/cadastrar_produto_servico/:id' element={<ClienteServico/>}/>
+                <Route path='/cadastrar_produto/:id' element={<ClienteProduto/>}/>
+                <Route path='/editar_rg/:id/:rg' element={<EditarRG/>}/>
+                <Route path='/editar_cpf/:id/:cpf' element={<EditarCPF/>}/>
+                <Route path='/editar_tell/:id/:tell' element={<EditarTell/>}/>
+                <Route path='/cadastrar_rg/:id' element={<CadastrarRG/>}/>
+                <Route path='/cadastrar_telefone/:id' element={<CadatrarTelefone/>}/>
             </Routes>
         </Router>
     );

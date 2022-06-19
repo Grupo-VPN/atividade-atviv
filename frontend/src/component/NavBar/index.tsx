@@ -23,10 +23,6 @@ function Navbar_() {
                             <NavDropdown.Item href="/cadastrar_produto">Produto</NavDropdown.Item>
                             <NavDropdown.Item href="/cadastrar_servico">Serviço</NavDropdown.Item>
                         </NavDropdown>
-                        <NavDropdown title="Vincular" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="/cadastrar_cliente_produto">Cliente e Produtos</NavDropdown.Item>
-                            <NavDropdown.Item href="/cadastrar_produto_servico">Cliente e Servicos</NavDropdown.Item>
-                        </NavDropdown>
                     </Nav>
                     </Navbar.Collapse>
                 </Container>

@@ -63,7 +63,7 @@ function Clientes() {
                                         <td>
                                             <Button variant="outline-success" href={`/editar_cliente/${cliente.cliente_id}`}>Editar</Button>{' '}
                                             <Button variant="outline-info"  href={`clientes/${cliente.cliente_id}`}>Visualizar</Button>{' '}
-                                            <Button variant="outline-info" href='/clientes/1'>Adicionar Produtos</Button>{' '}
+                                            <Button variant="outline-info" href={`cadastrar_produto/${cliente.cliente_id}`}>Adicionar Produtos</Button>{' '}
                                             <Button variant="outline-info" href={`cadastrar_produto_servico/${cliente.cliente_id}`}>Adicionar Serviços</Button>{' '}
                                             <Button variant="outline-danger" onClick={() => deleteUser(cliente.cliente_id)} >Remover</Button>{' '}
                                         </td>

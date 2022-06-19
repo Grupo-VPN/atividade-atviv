@@ -54,6 +54,37 @@ class Produtos {
             res.json(error)
         }
     }
+    async findMany(req: Request, res: Response){
+        try {
+            const find = await produtsoRepository
+            .createQueryBuilder()
+            .select(['p'])
+            .from(produtos, 'p')
+            .getMany()
+            res.json(find)
+        } catch (error) {
+            res.json(error)
+        }
+    }
+    async deleteProdutoRelacao(req: Request, res:Response,){
+        try {
+            const { id, produto } = req.params
+            await AppDataSource
+            .createQueryBuilder()
+            .delete()
+            .from(`produto_cliente`)
+            .where("clienteClienteId = :clienteClienteId", {
+                clienteClienteId: id
+            })
+            .andWhere("produtosProdutoId = :produtosProdutoId",{
+                produtosProdutoId: produto
+            })
+            .execute()
+            res.json({message: "oi"})
+        } catch (error) {
+            res.json(error)
+        }
+    }
 }
 
 export default new Produtos

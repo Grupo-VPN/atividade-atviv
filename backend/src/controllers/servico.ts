@@ -66,6 +66,25 @@ class Servico {
             res.json(error)
         }
     }
+    async deleteServicoRelacao(req: Request, res:Response,){
+        try {
+            const { id, servico } = req.params
+            await AppDataSource
+            .createQueryBuilder()
+            .delete()
+            .from(`servico_cliente`)
+            .where("clienteClienteId = :clienteClienteId", {
+                clienteClienteId: id
+            })
+            .andWhere("servicosServicoId = :servicosServicoId",{
+                servicosServicoId: servico
+            })
+            .execute()
+            res.json({message: "oi"})
+        } catch (error) {
+            res.json(error)
+        }
+    }
 }
 
 export default new Servico

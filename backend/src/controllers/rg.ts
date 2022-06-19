@@ -62,6 +62,42 @@ class RGs {
             res.json(error)
         }
     }
+    async createRG(req: Request, res: Response, next: NextFunction) {
+        try {
+            const { rg_valor, rg_dataEmissao }: IRg = req.body
+            await rgRepository
+                .createQueryBuilder()
+                .insert()
+                .into(RG)
+                .values({
+                    rg_valor: rg_valor,
+                    rg_dataEmissao: rg_dataEmissao,
+                    cliente: req.body.cliente
+                })
+                .execute()
+            res.json(req.body)
+        } catch (error) {
+            res.json(error)
+        }
+    }
+    async deleteRG(req: Request, res: Response) {
+        try {
+            const { id, rg } = req.params
+            await rgRepository
+            .createQueryBuilder()
+            .delete()
+            .from(RG)
+            .where("rg_id = :rg_id",{
+                rg_id: rg
+            })
+            .andWhere("cliente = :cliente_id", {
+                cliente_id: id
+            })
+            .execute()
+        } catch (error) {
+            res.json(error)
+        }
+    }
 }
 
 export default new RGs

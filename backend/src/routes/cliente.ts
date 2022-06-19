@@ -14,8 +14,11 @@ router.get('/achar-cliente/:id', Cliente.findOne)
 router.get('/achar-cliente', Cliente.findMany)
 
 router.delete('/deletar-cliente/:id', Telefone.delete, RGs.delete, CPFs.delete, Produtos.deleteRelations, Servico.deleteRelations, Cliente.delete)
-
-router.put('/atualizar-cliente-telefone/:cliente_id/:telefone_id', Telefone.update)
+router.post('/enviar-rg', RGs.createRG)
+router.post('/enviar-telefone', Telefone.createTell)
+router.delete('/deletar-rg/:id/:rg', RGs.deleteRG)
+router.delete('/deletar-tell/:id/:tell', Telefone.deletarTell)
+router.put('/atualizar-cliente-telefone/:cliente_id/:telefone_id', Telefone.update )
 router.put('/atualizar-cliente-cpf/:cliente_id/:cpf_id', CPFs.update)
 router.put('/atualizar-cliente-rg/:cliente_id/:rg_id', RGs.update)
 

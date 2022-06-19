@@ -29,6 +29,17 @@ function ClienteServico() {
         const response = await service.get<IServico[]>(`/servico/achar-servico`)
         setServicco(response.data)
     }
+    const deletar = useCallback(
+        async (idServico: number) => {
+            await service.delete(`/servico/deletar-servico-cliente/${id}/${idServico}`)
+                .then(({ data }) => {
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        }, []
+    )
     const adicionarServico = useCallback(async (data: IForm) => {
         await service.post(`/servico/add-servico-cliente/${id}`, {
             servicosServicoId: data.servicoid
@@ -37,10 +48,9 @@ function ClienteServico() {
         })
             .catch(error => {
                 console.log(error);
+                alert("Cliente já tem esse servico!");
             });
     }, [])
-
-    const findServico = cliente?.servicos.filter(s => s.servico_id).map(i => i.servico_id)
 
     const {
         register,
@@ -73,6 +83,9 @@ function ClienteServico() {
                                     <Card.Text>
                                         Valor: {s.servico_valor}
                                     </Card.Text>
+                                    <Card.Text>
+                                        <Button onClick={() => deletar(s.servico_id)}>Deletar</Button>
+                                    </Card.Text>
                                 </>
                             )
                         })}
@@ -83,12 +96,10 @@ function ClienteServico() {
                     <form onSubmit={handleSubmit(adicionarServico)}>
                         <select
                             placeholder={
-                                'Selecione o serviço'
+                                'Selecione o servico'
                             }
                             {...register('servicoid')}>
-                            {servico && servico.filter((f, i: number) =>
-                                !(cliente?.servicos[i]?.servico_nome)
-                            ).map(i => {
+                            {servico && servico.map(i => {
                                 return (
                                     <option key={i.servico_id} value={i.servico_id}>
                                         {i.servico_nome}

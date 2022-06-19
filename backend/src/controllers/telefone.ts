@@ -1,42 +1,45 @@
-import { CPF } from 'models/cpf'
+import { telefone } from 'models/telefone'
 import { AppDataSource } from 'database/database'
 import { NextFunction, Request, Response } from 'express'
-import { ICpf } from 'interface'
+import { ITelefone } from 'interface'
 
-const cpfRepository = AppDataSource.getRepository(CPF)
+const telefoneRepository = AppDataSource.getRepository(telefone)
 
-class CPFs {
-    async create(req: Request, res: Response,) {
+class Telefone {
+    async create(req: Request, res: Response, next: NextFunction) {
         try {
-            const { cpf_valor, cpf_dataEmissao }: ICpf = req.body
-            await cpfRepository
+            const { telefones } = req.body
+            const cliente = req.body.cliente_id
+            const adicionarTelefone = telefones.map((t: any) => {
+                return {
+                    ...t,
+                    cliente
+                }
+            })
+            await telefoneRepository
                 .createQueryBuilder()
                 .insert()
-                .into(CPF)
-                .values({
-                    cpf_valor: cpf_valor,
-                    cpf_dataEmissao: cpf_dataEmissao,
-                    cliente: req.body.cliente_id
-                })
+                .into(telefone)
+                .values(adicionarTelefone)
                 .execute()
-            res.json(req.body)
+            next()
         } catch (error) {
             res.json(error)
         }
     }
     async update(req: Request, res: Response) {
         try {
-            const { cliente_id, cpf_id } = req.params
-            const body: ICpf = req.body
-            await cpfRepository
+            const { telefone_id, cliente_id } = req.params
+            const body: ITelefone = req.body
+            await telefoneRepository
                 .createQueryBuilder()
                 .update()
                 .set({
-                    "cpf_dataEmissao": body.cpf_dataEmissao,
-                    "cpf_valor": body.cpf_valor
+                    "telefone_ddd": body.telefone_ddd,
+                    "telefone_numero": body.telefone_numero
                 })
-                .where('cpf_id = :cpf_id', {
-                    cpf_id: cpf_id
+                .where('telefone_id = :telefone_id', {
+                    telefone_id: telefone_id
                 })
                 .andWhere('cliente = :cliente_id', {
                     cliente_id: cliente_id
@@ -50,7 +53,7 @@ class CPFs {
     async delete(req: Request, res: Response, next: NextFunction) {
         try {
             const { id } = req.params
-            await cpfRepository
+            await telefoneRepository
                 .createQueryBuilder()
                 .delete()
                 .where("cliente = :cliente_id", {
@@ -64,4 +67,4 @@ class CPFs {
     }
 }
 
-export default new CPFs
+export default new Telefone

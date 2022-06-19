@@ -50,7 +50,7 @@ class Cliente {
                     cliente_id: id
                 })
                 .execute()
-            res.json({ message: "Cliente adicionado com sucesso" })
+            res.json({ message: "Cliente deletado com sucesso" })
         } catch (error) {
             res.json(error)
         }
@@ -63,11 +63,17 @@ class Cliente {
                 .select([
                     "cli",
                     "cpf",
-                    "rg"
+                    "rg",
+                    "tell",
+                    "prod",
+                    "serv"
                 ])
                 .from(cliente, 'cli')
                 .leftJoin('cli.cpf', 'cpf')
                 .leftJoin('cli.rg', 'rg')
+                .leftJoin('cli.telefones', 'tell')
+                .leftJoin('cli.produtos', 'prod')
+                .leftJoin('cli.servicos', 'serv')
                 .where("cli.cliente_id = :cliente_id", {
                     cliente_id: id
                 })

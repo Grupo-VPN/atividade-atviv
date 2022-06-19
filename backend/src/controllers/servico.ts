@@ -1,18 +1,18 @@
-import { produtos } from "models/produto";
+import { servicos } from "models/servico";
 import { AppDataSource } from 'database/database'
 import { NextFunction, Request, Response } from 'express'
-import { IProdutos } from 'interface'
+import { IServicos } from 'interface'
 
-const produtsoRepository = AppDataSource.getRepository(produtos)
+const servicosRepository = AppDataSource.getRepository(servicos)
 
-class Produtos {
+class Servico {
     async create(req: Request, res: Response, next: NextFunction) {
         try {
-            const { produto_id, produto_valor, produto_nome }: IProdutos = req.body
-            await produtsoRepository
+            const { servico_id, servico_nome, servico_valor }: IServicos = req.body
+            await servicosRepository
                 .createQueryBuilder()
                 .insert()
-                .into(produtos)
+                .into(servicos)
                 .values(req.body)
                 .execute()
             res.json(req.body)
@@ -20,17 +20,29 @@ class Produtos {
             res.json(error)
         }
     }
+    async findMany(req: Request, res: Response) {
+        try {
+            const find = await servicosRepository
+                .createQueryBuilder()
+                .select(['s'])
+                .from(servicos, 's')
+                .getMany()
+            res.json(find)
+        } catch (error) {
+            res.json(error)
+        }
+    }
     async relation(req: Request, res: Response) {
         try {
+            const { servicosServicoId } = req.body
             const { id } = req.params
-            const { produtosProdutoId } = req.body
             await AppDataSource
                 .createQueryBuilder()
                 .insert()
-                .into(`produto_cliente`)
+                .into(`servico_cliente`)
                 .values({
                     clienteClienteId: id,
-                    produtosProdutoId: produtosProdutoId
+                    servicosServicoId: servicosServicoId
                 })
                 .execute()
             res.json(req.body)
@@ -44,7 +56,7 @@ class Produtos {
             await AppDataSource
                 .createQueryBuilder()
                 .delete()
-                .from(`produto_cliente`)
+                .from(`servico_cliente`)
                 .where("clienteClienteId = :clienteClienteId", {
                     clienteClienteId: id
                 })
@@ -56,4 +68,4 @@ class Produtos {
     }
 }
 
-export default new Produtos
+export default new Servico

@@ -6,6 +6,9 @@ import './styles.css'
 import { service } from '../../../service/serve'
 import ICliente from '../../../interface/';
 
+{/* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link> */}
+
+
 function Clientes() {
     const [clientes, setCliente] = useState<ICliente[]>([])
     useEffect(() => {
@@ -60,7 +63,7 @@ function Clientes() {
                                         <td>
                                             {cliente.cliente_genero}
                                         </td>
-                                        <td>
+                                        <td className='Button'>
                                             <Button variant="outline-success" href={`/editar_cliente/${cliente.cliente_id}`}>Editar</Button>{' '}
                                             <Button variant="outline-info"  href={`clientes/${cliente.cliente_id}`}>Visualizar</Button>{' '}
                                             <Button variant="outline-info" href={`cadastrar_produto/${cliente.cliente_id}`}>Adicionar Produtos</Button>{' '}

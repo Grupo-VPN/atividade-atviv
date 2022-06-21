@@ -10,7 +10,7 @@ function VisualizarProduto() {
             </header>
             <main>
                 <h1>Visualizar Produto: "Shampoo ant-calvice"</h1>
-                <Button variant="outline-dark" href='/clientes'>Voltar</Button>
+                <Button variant="outline-dark" href='/produtos'>Voltar</Button>
                 <Card
                 bg="white"
                 text="dark"

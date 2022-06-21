@@ -1,7 +1,8 @@
 /* eslint-disable react/jsx-pascal-case */
 import * as React from 'react';
 import { Button, Table } from 'react-bootstrap';
-import NavBar_ from '../../../component/NavBar'
+import NavBar_ from '../../../component/NavBar';
+import './styles.css'
 
 function Produtos() {
     return (
@@ -26,7 +27,7 @@ function Produtos() {
                                 <td>1</td>
                                 <td>Shampoo ant-calvice</td>
                                 <td>R$15</td>
-                                <td>
+                                <td className='Button'>
                                     <Button variant="outline-success">Editar</Button>{' '}
                                     <Button variant="outline-info" href='/produtos/1'>Visualizar</Button>{' '}
                                     <Button variant="outline-danger">Remover</Button>{' '}
@@ -36,7 +37,7 @@ function Produtos() {
                                 <td>2</td>
                                 <td>Shampoo ant-bacterias</td>
                                 <td>R$20</td>
-                                <td>
+                                <td className='Button'>
                                     <Button variant="outline-success">Editar</Button>{' '}
                                     <Button variant="outline-info">Visualizar</Button>{' '}
                                     <Button variant="outline-danger">Remover</Button>{' '}
@@ -46,7 +47,7 @@ function Produtos() {
                                 <td>3</td>
                                 <td>Shampoo CR7 Clear-Man</td>
                                 <td>R$1500</td>
-                                <td>
+                                <td className='Button'>
                                     <Button variant="outline-success">Editar</Button>{' '}
                                     <Button variant="outline-info">Visualizar</Button>{' '}
                                     <Button variant="outline-danger">Remover</Button>{' '}

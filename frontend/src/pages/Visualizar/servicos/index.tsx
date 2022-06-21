@@ -10,7 +10,7 @@ function VisualizarServico() {
             </header>
             <main>
                 <h1>Visualizar Serviço: "Cortar unhas"</h1>
-                <Button variant="outline-dark" href='/clientes'>Voltar</Button>
+                <Button variant="outline-dark" href='/servicos'>Voltar</Button>
                 <Card
                 bg="white"
                 text="dark"

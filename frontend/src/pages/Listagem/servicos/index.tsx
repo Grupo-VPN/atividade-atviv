@@ -1,7 +1,8 @@
 /* eslint-disable react/jsx-pascal-case */
 import * as React from 'react';
 import { Button, Table } from 'react-bootstrap';
-import NavBar_ from '../../../component/NavBar'
+import NavBar_ from '../../../component/NavBar';
+import './styles.css'
 
 function Servicos() {
     return (
@@ -23,10 +24,10 @@ function Servicos() {
                         </thead>
                         <tbody>
                             <tr>
-                                <td>1</td>
+                                <td className='Center'>1</td>
                                 <td>Cortar unhas</td>
                                 <td>R$20</td>
-                                <td>
+                                <td className='Button'>
                                     <Button variant="outline-success">Editar</Button>{' '}
                                     <Button variant="outline-info" href='/servicos/1'>Visualizar</Button>{' '}
                                     <Button variant="outline-danger">Remover</Button>{' '}
@@ -36,7 +37,7 @@ function Servicos() {
                                 <td>2</td>
                                 <td>Chapinha</td>
                                 <td>R$50</td>
-                                <td>
+                                <td className='Button'>
                                     <Button variant="outline-success">Editar</Button>{' '}
                                     <Button variant="outline-info">Visualizar</Button>{' '}
                                     <Button variant="outline-danger">Remover</Button>{' '}
@@ -46,7 +47,7 @@ function Servicos() {
                                 <td>3</td>
                                 <td>Escova</td>
                                 <td>R$60</td>
-                                <td>
+                                <td className='Button'>
                                     <Button variant="outline-success">Editar</Button>{' '}
                                     <Button variant="outline-info">Visualizar</Button>{' '}
                                     <Button variant="outline-danger">Remover</Button>{' '}

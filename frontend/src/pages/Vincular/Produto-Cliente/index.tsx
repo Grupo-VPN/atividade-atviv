@@ -66,31 +66,30 @@ function ClienteProduto() {
                 <NavBar_ />
             </header>
             <main>
-                <Card
-                    bg="white"
-                    text="dark"
-                    style={{ width: '18rem' }}
-                    className="mb-2"
-                >
-                    <Card.Header>Produtos já consumidos</Card.Header>
-                    <Card.Body>
-                        {cliente && cliente.produtos.map(s => {
-                            return (
-                                <>
-                                    <Card.Text>
-                                        Produto: {s.produto_nome}
-                                    </Card.Text>
+
+                {cliente && cliente.produtos.map(s => {
+                    return (
+                        <>
+                            <Card
+                                bg="white"
+                                text="dark"
+                                style={{ width: '18rem' }}
+                                className="mb-2"
+                            >
+                                <Card.Header> Produto: {s.produto_nome}</Card.Header>
+                                <Card.Body>
                                     <Card.Text>
                                         Valor: {s.produto_valor}
                                     </Card.Text>
                                     <Card.Text>
                                         <Button onClick={() => deletar(s.produto_id)}>Deletar</Button>
                                     </Card.Text>
-                                </>
-                            )
-                        })}
-                    </Card.Body>
-                </Card>
+                                </Card.Body>
+                            </Card>
+                        </>
+                    )
+                })}
+
                 <h1>Cliente: "{cliente?.cliente_nome}"</h1>
                 <div className="forms">
                     <form onSubmit={handleSubmit(adicionarProduto)}>

@@ -69,7 +69,7 @@ function VisualizarCliente() {
                                 return (
                                     <>
                                         <p>
-                                            RG {index + 1}: - {rg.rg_valor} / {rg.rg_dataEmissao}
+                                            RG {index + 1}: - {rg.rg_valor} / {(rg.rg_dataEmissao)}
                                             <Button variant="outline-info" href={`/editar_rg/${cliente.cliente_id}/${rg.rg_id}`}>Editar RG</Button>{' '}
                                             <Button variant="outline-info" onClick={() => deletar(rg.rg_id)}>Deletar RG</Button>{' '}
                                         </p>

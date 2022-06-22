@@ -15,6 +15,7 @@ import VisualizarCliente from '../pages/Visualizar/clientes';
 import VisualizarProduto from '../pages/Visualizar/produtos';
 import VisualizarServico from '../pages/Visualizar/servicos';
 import EditarCliente from '../pages/Editar/clientes';
+import EditarProduto from '../pages/Editar/produtos';
 import ClienteServico from '../pages/Vincular/Servico-Cliente'
 import ClienteProduto from '../pages/Vincular/Produto-Cliente'
 import EditarRG from '../pages/Visualizar/clientes/rg'
@@ -36,10 +37,10 @@ function AppRoutes() {
                 <Route path='/cadastrar_produto' element={<CadastrarProdutos/>}/>
                 <Route path='/cadastrar_servico' element={<CadastrarServico/>}/>
                 <Route path='/clientes/:id' element={<VisualizarCliente/>}/>
-                <Route path='/produtos/1' element={<VisualizarProduto/>}/>
+                <Route path='/produtos/:id' element={<VisualizarProduto/>}/>
                 <Route path='/servicos/1' element={<VisualizarServico/>}/>
                 <Route path='/editar_cliente/:id' element={<EditarCliente/>}/>
-                <Route path='/editar_produto/1' element={<EditarCliente/>}/>
+                <Route path='/editar_produto/:id' element={<EditarProduto/>}/>
                 <Route path='/editar_servico/1' element={<EditarCliente/>}/>
                 <Route path='/cadastrar_produto_servico/:id' element={<ClienteServico/>}/>
                 <Route path='/cadastrar_produto/:id' element={<ClienteProduto/>}/>

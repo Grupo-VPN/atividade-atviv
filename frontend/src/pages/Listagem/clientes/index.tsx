@@ -6,9 +6,6 @@ import './styles.css';
 import { service } from '../../../service/serve';
 import ICliente from '../../../interface/';
 
-{/* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link> */}
-
-
 function Clientes() {
     const [clientes, setCliente] = useState<ICliente[]>([])
     useEffect(() => {

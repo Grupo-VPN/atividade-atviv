@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Button, Card } from 'react-bootstrap';
 import NavBar_ from '../../../component/NavBar';
+import './styles.css';
 
 function VisualizarProduto() {
     return(

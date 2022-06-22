@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-pascal-case */
 import { useState, useCallback, useEffect } from 'react';
 import { Button, Table } from 'react-bootstrap';
-import NavBar_ from '../../../component/NavBar'
-import './styles.css'
-import { service } from '../../../service/serve'
+import NavBar_ from '../../../component/NavBar';
+import './styles.css';
+import { service } from '../../../service/serve';
 import ICliente from '../../../interface/';
 
 {/* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link> */}

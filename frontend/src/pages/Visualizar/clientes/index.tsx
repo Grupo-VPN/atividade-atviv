@@ -3,7 +3,8 @@ import { Button, Card } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import NavBar_ from '../../../component/NavBar';
 import ICliente from '../../../interface/';
-import { service } from '../../../service/serve'
+import { service } from '../../../service/serve';
+import './styles.css'
 
 function VisualizarCliente() {
     const [cliente, setCliente] = useState<ICliente>()
@@ -86,7 +87,7 @@ function VisualizarCliente() {
                                         Telefone: {tell.telefone_ddd}{' '}{tell.telefone_numero}
                                         <Button variant="outline-info" href={`/editar_tell/${cliente.cliente_id}/${tell.telefone_id}`}>Editar Telefone</Button>{' '}
                                         <Button variant="outline-info" onClick={() => deletarTell(tell.telefone_id)}>Deletar Telefone</Button>{' '}
-
+                                        <br></br>
                                     </>)
                             })}
                             <Button variant="outline-info" href={`/cadastrar_telefone/${cliente?.cliente_id}`}>Adicionar Telefone</Button>{' '}

@@ -17,7 +17,7 @@ const app = express();
 try {
     AppDataSource.initialize().then(async () => {
         console.log('Banco conectado com sucesso');
-        await AppDataSource.createQueryBuilder()
+        /* await AppDataSource.createQueryBuilder()
             .insert()
             .into(produtos)
             .values([
@@ -36,7 +36,7 @@ try {
             {servico_nome: "Pedicure", servico_valor: 50.75},
             {servico_nome: "Cabelo na régua", servico_valor: 50.75}
         ])
-        .execute()
+        .execute() */
     })
 } catch (error) {
     console.log(`Connection error ${error}`);

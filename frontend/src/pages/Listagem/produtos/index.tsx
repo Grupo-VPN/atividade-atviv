@@ -49,7 +49,7 @@ function Produtos() {
                                     <tr>
                                         <td>{p.produto_id}</td>
                                         <td>{p.produto_nome}</td>
-                                        <td>{p.produto_valor}</td>
+                                        <td>{p.produto_valor}</td>      
                                         <td className='Button'>
                                             <Button variant="outline-success" href={`editar_produto/${p.produto_id}`} >Editar</Button>{' '}
                                             <Button variant="outline-info" href={`produtos/${p.produto_id}`}>Visualizar</Button>{' '}

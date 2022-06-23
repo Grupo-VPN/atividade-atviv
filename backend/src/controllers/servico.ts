@@ -85,6 +85,41 @@ class Servico {
             res.json(error)
         }
     }
+    async findOne (req:Request, res:Response){
+        try {
+            const {id} = req.params
+            const find = await servicosRepository.
+            createQueryBuilder().select(['s']).from(servicos,'s')
+            .where('s.servico_id = :servico_id',{servico_id:id}).getOne()
+            res.json (find)  
+        } catch (error) {
+            res.json (error)        
+        }
+    }
+    async deletar(req:Request, res:Response) {
+        try {
+            const {id} = req.params
+            await servicosRepository.
+            createQueryBuilder().delete().from(servicos).
+            where ('servico_id = :servico_id',{servico_id:id}).execute()
+        } catch(error){
+            res.json (error)
+        }
+    }
+
+    async editar(req:Request, res:Response){
+        try {
+            const {id} = req.params
+            const body: IServicos = req.body
+            await servicosRepository.
+            createQueryBuilder().update().set({
+                'servico_nome':body.servico_nome,
+                'servico_valor':body.servico_valor
+            }).where ('servico_id = :servico_id', {servico_id:id}).execute()
+        } catch(error){
+            res.json (error)
+        }
+    }
 }
 
 export default new Servico

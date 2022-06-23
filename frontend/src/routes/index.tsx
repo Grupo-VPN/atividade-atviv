@@ -23,6 +23,7 @@ import EditarCPF from '../pages/Visualizar/clientes/cpf'
 import EditarTell from '../pages/Visualizar/clientes/telefone'
 import CadastrarRG from '../pages/Cadastro/clientes/rg'
 import CadatrarTelefone from '../pages/Cadastro/clientes/telefone'
+import EditarServico from '../pages/Editar/servicos';
 
 function AppRoutes() {
     return (
@@ -38,10 +39,10 @@ function AppRoutes() {
                 <Route path='/cadastrar_servico' element={<CadastrarServico/>}/>
                 <Route path='/clientes/:id' element={<VisualizarCliente/>}/>
                 <Route path='/produtos/:id' element={<VisualizarProduto/>}/>
-                <Route path='/servicos/1' element={<VisualizarServico/>}/>
+                <Route path='/servicos/:id' element={<VisualizarServico/>}/>
                 <Route path='/editar_cliente/:id' element={<EditarCliente/>}/>
                 <Route path='/editar_produto/:id' element={<EditarProduto/>}/>
-                <Route path='/editar_servico/1' element={<EditarCliente/>}/>
+                <Route path='/editar_servico/:id' element={<EditarServico/>}/>
                 <Route path='/cadastrar_produto_servico/:id' element={<ClienteServico/>}/>
                 <Route path='/cadastrar_produto/:id' element={<ClienteProduto/>}/>
                 <Route path='/editar_rg/:id/:rg' element={<EditarRG/>}/>

@@ -1,10 +1,36 @@
 /* eslint-disable react/jsx-pascal-case */
 import * as React from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Button, Table } from 'react-bootstrap';
 import NavBar_ from '../../../component/NavBar';
+import IServico from '../../../interface/servico';
+import { service } from '../../../service/serve';
 import './styles.css'
 
 function Servicos() {
+
+    const [servico, setServico] = useState<IServico[]>([])
+    useEffect(() => {
+        getServicos()
+    })
+
+    async function getServicos() {
+        const response = await service.get<IServico[]>(`/servico/achar-servico`)
+        setServico(response.data)
+    }
+
+    const deletar = useCallback(
+        async (serv: number) => {
+            await service.delete(`servico/deletar/${serv}`)
+                .then(({ data }) => {
+                    console.log(data)
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        }, []
+    )
+
     return (
         <section>
             <header>
@@ -16,44 +42,28 @@ function Servicos() {
                     <Table striped bordered hover variant="light">
                         <thead>
                             <tr>
-                            <th>Id</th>
-                            <th>Serviço</th>
-                            <th>Preço</th>
-                            <th>Ações</th>
+                                <th>Id</th>
+                                <th>Serviço</th>
+                                <th>Preço</th>
+                                <th>Ações</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td className='Center'>1</td>
-                                <td>Cortar unhas</td>
-                                <td>R$20</td>
-                                <td className='Button'>
-                                    <Button variant="outline-success">Editar</Button>{' '}
-                                    <Button variant="outline-info" href='/servicos/1'>Visualizar</Button>{' '}
-                                    <Button variant="outline-danger">Remover</Button>{' '}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Chapinha</td>
-                                <td>R$50</td>
-                                <td className='Button'>
-                                    <Button variant="outline-success">Editar</Button>{' '}
-                                    <Button variant="outline-info">Visualizar</Button>{' '}
-                                    <Button variant="outline-danger">Remover</Button>{' '}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Escova</td>
-                                <td>R$60</td>
-                                <td className='Button'>
-                                    <Button variant="outline-success">Editar</Button>{' '}
-                                    <Button variant="outline-info">Visualizar</Button>{' '}
-                                    <Button variant="outline-danger">Remover</Button>{' '}
-                                </td>
-                            </tr>
-                        </tbody>
+                        {servico.map(s => {
+                            return (
+                                <tbody>
+                                    <tr>
+                                        <td className='Center'>{s.servico_id}</td>
+                                        <td>{s.servico_nome}</td>
+                                        <td>{s.servico_valor}</td>
+                                        <td className='Button'>
+                                            <Button variant="outline-success" href={`editar_servico/${s.servico_id}`}>Editar</Button>{' '}
+                                            <Button variant="outline-info" href={`servicos/${s.servico_id}`}>Visualizar</Button>{' '}
+                                            <Button variant="outline-danger" onClick={() => deletar(s.servico_id)}>Remover</Button>{' '}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            )
+                        })}   
                     </Table>
                 </div>
             </main>

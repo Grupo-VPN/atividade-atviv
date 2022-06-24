@@ -5,6 +5,7 @@ import NavBar_ from '../../../component/NavBar';
 import './styles.css';
 import { service } from '../../../service/serve';
 import ICliente from '../../../interface/';
+import { Eye, PencilSimple, Eraser, ListPlus } from 'phosphor-react';
 
 function Clientes() {
     const [clientes, setCliente] = useState<ICliente[]>([])
@@ -59,13 +60,23 @@ function Clientes() {
                                         </td>
                                         <td>
                                             {cliente.cliente_genero}
-                                        </td>
-                                        <td className='Button'>
-                                            <Button variant="outline-success" href={`/editar_cliente/${cliente.cliente_id}`}>Editar</Button>{' '}
-                                            <Button variant="outline-info"  href={`clientes/${cliente.cliente_id}`}>Visualizar</Button>{' '}
-                                            <Button variant="outline-info" href={`cadastrar_produto/${cliente.cliente_id}`}>Adicionar Produtos</Button>{' '}
-                                            <Button variant="outline-info" href={`cadastrar_produto_servico/${cliente.cliente_id}`}>Adicionar Serviços</Button>{' '}
-                                            <Button variant="outline-danger" onClick={() => deleteUser(cliente.cliente_id)} >Remover</Button>{' '}
+                                        </td>                 
+                                        <td>
+                                            <div className='icons'>
+                                                <a href={`/editar_cliente/${cliente.cliente_id}`}><PencilSimple size={35} color="#198754" alt='Editar Cliente'/></a>                                          
+                                                <a href={`clientes/${cliente.cliente_id}`}><Eye size={35} color="#0DCAF0" alt='Visualizar Cliente'/></a>
+                                                <a href={`cadastrar_produto/${cliente.cliente_id}`}><ListPlus size={35} color="#0DCAF0" alt='Adicionar Produtos'/></a>
+                                                <a href={`cadastrar_produto_servico/${cliente.cliente_id}`}><ListPlus size={35} color="#0DCAF0" alt='Adicionar Serviços'/></a>
+                                                <a href="##" onClick={() => deleteUser(cliente.cliente_id)}><Eraser size={35} color="#DC3545" alt='Remover Cliente'/></a>
+                                            </div>
+
+                                            <div className='Button'>
+                                                <Button variant="outline-success" href={`/editar_cliente/${cliente.cliente_id}`}>Editar</Button>{' '}
+                                                <Button variant="outline-info"  href={`clientes/${cliente.cliente_id}`}>Visualizar</Button>{' '}
+                                                <Button variant="outline-info" href={`cadastrar_produto/${cliente.cliente_id}`}>Adicionar Produtos</Button>{' '}
+                                                <Button variant="outline-info" href={`cadastrar_produto_servico/${cliente.cliente_id}`}>Adicionar Serviços</Button>{' '}
+                                                <Button variant="outline-danger" onClick={() => deleteUser(cliente.cliente_id)} >Remover</Button>{' '}
+                                            </div>
                                         </td>
                                     </tr>
                                 )

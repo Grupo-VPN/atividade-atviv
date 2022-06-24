@@ -60,6 +60,8 @@ function EditarProduto() {
                 <NavBar_ />
             </header>
             <main>
+                <h1>Editar Produto: "{produto?.produto_nome}"</h1>
+                <Button variant="outline-dark" href='/produtos'>Voltar</Button>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="field">
                         <label htmlFor="Nome" >Nome do Produto:</label>

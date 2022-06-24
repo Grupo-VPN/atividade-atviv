@@ -4,7 +4,7 @@ import { Button, Table } from 'react-bootstrap';
 import NavBar_ from '../../../component/NavBar';
 import IProduto from '../../../interface/produto';
 import { service } from '../../../service/serve';
-import './styles.css'
+import { PencilSimple, Eraser, Eye } from 'phosphor-react';
 
 function Produtos() {
     const [produto, setProduto] = useState<IProduto[]>([])
@@ -50,10 +50,17 @@ function Produtos() {
                                         <td>{p.produto_id}</td>
                                         <td>{p.produto_nome}</td>
                                         <td>{p.produto_valor}</td>      
-                                        <td className='Button'>
-                                            <Button variant="outline-success" href={`editar_produto/${p.produto_id}`} >Editar</Button>{' '}
-                                            <Button variant="outline-info" href={`produtos/${p.produto_id}`}>Visualizar</Button>{' '}
-                                            <Button variant="outline-danger" onClick={() => deletar(p.produto_id)}>Remover</Button>{' '}
+                                        <td>
+                                            <div className="icons">
+                                                <a href={`editar_produto/${p.produto_id}`}><PencilSimple size={35} color="#198754"/></a>
+                                                <a href={`produtos/${p.produto_id}`}><Eye size={35} color="#0DCAF0"/></a>
+                                                <a href="##" onClick={() => deletar(p.produto_id)}><Eraser size={35} color="#DC3545"/></a>           
+                                            </div> 
+                                            <div className="Button">
+                                                <Button variant="outline-success" href={`editar_produto/${p.produto_id}`} >Editar</Button>{' '}
+                                                <Button variant="outline-info" href={`produtos/${p.produto_id}`}>Visualizar</Button>{' '}
+                                                <Button variant="outline-danger" onClick={() => deletar(p.produto_id)}>Remover</Button>{' '}
+                                            </div>
                                         </td>
                                     </tr>
                                 </tbody>

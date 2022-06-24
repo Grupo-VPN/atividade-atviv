@@ -4,14 +4,25 @@ main h1{
 
 .tables{
     margin: 25px 10px;
-    
+    width: 80%;
+}
+
+.icons{
+    display: none;
+    flex-direction: column;
 }
 
 
- @media (max-width: 946px) {
+ @media (max-width: 632px) {
     .Button{
-        display: flex;
+        display: none;
         flex-direction: column;
         gap: 5px;
     }
+
+    .icons{
+        display: flex
+    }
+    
+
 }; 

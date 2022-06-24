@@ -62,6 +62,8 @@ function EditarServico() {
                 <NavBar_/>
             </header>
             <main>
+                <h1>Editar Serviço: "{servico?.servico_nome}"</h1>
+                <Button variant="outline-dark" href='/servicos'>Voltar</Button>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="field">
                         <label htmlFor="Nome" >Nome do Serviço:</label>
